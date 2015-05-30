@@ -3,20 +3,31 @@ from django.db import models
 # Create your models here.
 from django.db import models
 
+class PaymentTypes(models.Model):
+    type = models.CharField(max_length=255, unique=True)
+
+    def __unicode__(self):
+        return self.type
+
+class Locations(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+class Tickets(models.Model):
+    ticket_number = models.PositiveIntegerField(unique=True)
+    date_entered = models.DateField(auto_now_add=True)
+    sold = models.BooleanField(default=False)
+    location = models.ForeignKey(Locations, to_field="name")
+    def __unicode__(self):
+        return str(self.ticket_number)
 
 class Transactions(models.Model):
-    ticket_number = models.ForeignKey('Tickets', to_field="ticket_number")
+    ticket_number = models.ForeignKey(Tickets, to_field="ticket_number", limit_choices_to={'sold': False})
     date = models.DateField(auto_now_add=True)
-    library_choices = (
-        ('Leb', "Lebanon"),
-        ('KPL', "Kilton"),
-    )
-    library = models.CharField(max_length=3, choices=library_choices)
-    payment_type_choices = (
-        ('cash', 'Cash'),
-        ('check', 'Check'),
-    )
-    payment_type = models.CharField(max_length=5, choices = payment_type_choices, default = "cash")
+    location = models.ForeignKey(Locations, to_field="name")
+    payment_type = models.ForeignKey(PaymentTypes)
     check_number = models.PositiveIntegerField(null=True)
     reported = models.BooleanField(default=False)
     staff_initials = models.CharField(max_length=4)
@@ -25,10 +36,4 @@ class Transactions(models.Model):
         return str(self.id)
 
 
-class Tickets(models.Model):
-    ticket_number = models.PositiveIntegerField(unique=True)
-    date_entered = models.DateField(auto_now_add=True)
-    sold = models.BooleanField(default=False)
 
-    def __unicode__(self):
-        return str(self.ticket_number)
