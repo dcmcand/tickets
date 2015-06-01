@@ -1,0 +1,1 @@
+[{"ticket_number":12345,"date_entered":"2015-05-27","sold":false,"location":"Lebanon Library"},{"ticket_number":9876,"date_entered":"2015-05-30","sold":true,"location":"Lebanon Library"},{"ticket_number":56789,"date_entered":"2015-05-30","sold":false,"location":"Lebanon Library"}]
