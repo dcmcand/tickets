@@ -39,14 +39,15 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'ticket_app',
 	'rest_framework',
-    'oauth2_provider',
+    'rest_framework.authtoken'
+
 )
 
-REST_FRAMEWORK = (
+REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-    'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    'rest_framework.authentication.TokenAuthentication',
     )
-)
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
