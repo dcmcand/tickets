@@ -10,7 +10,7 @@ class TicketSerializer(serializers.ModelSerializer):
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transactions
-        fields = ('ticket_number', 'date', 'location', 'check_number', 'reported')
+        fields = ('ticket_number', 'date', 'location','payment_type', 'staff_initials', 'check_number', 'reported')
 
 
 

@@ -1,26 +1,42 @@
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from ticket_app.models import Transactions, Tickets, Locations, PaymentTypes
+
+from rest_framework import generics
+from ticket_app.models import Transactions, Tickets
 from ticket_app.serializers import TicketSerializer, TransactionSerializer
 
-# Create your views here.
-@api_view(['GET', 'POST'])
-def ticket_list(request, format=None):
+class TicketList(generics.ListCreateAPIView):
     """
-    List all tickets or create a new ticket
-    :param request:
-    :return:
+    List all Tickets or Create a new Ticket
     """
-    if request.method == 'GET':
-        tickets = Tickets.objects.all()
-        serializer = TicketSerializer(tickets, many=True)
-        return Response(serializer.data)
+    queryset = Tickets.objects.all()
+    serializer_class = TicketSerializer
 
-    elif request.method == 'POST':
-        serializer = TicketSerializer(data = request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class TicketAudit(generics.ListAPIView):
+    """
+    Shows unsold tickets
+    """
+    queryset = Tickets.objects.exclude(sold=True)
+    serializer_class = TicketSerializer
+
+
+class TransactionList(generics.ListCreateAPIView):
+    """
+    List all Transactions or Create a new Transaction
+    """
+    queryset = Transactions.objects.all()
+    serializer_class = TransactionSerializer
+
+class TransactionDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update, or delete a transaction instance
+    """
+    queryset = Transactions.objects.all()
+    serializer_class = TransactionSerializer
+
+class TransactionReport(generics.ListAPIView):
+    """
+    Shows unreported transactions
+    """
+    queryset = Transactions.objects.exclude(reported=True)
+    serializer_class = TransactionSerializer
+
 
