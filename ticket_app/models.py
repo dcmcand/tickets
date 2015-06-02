@@ -24,16 +24,20 @@ class Tickets(models.Model):
         return str(self.ticket_number)
 
 class Transactions(models.Model):
-    ticket_number = models.ForeignKey(Tickets, to_field="ticket_number", limit_choices_to={'sold': False})
     date = models.DateField(auto_now_add=True)
     location = models.ForeignKey(Locations, to_field="name")
     payment_type = models.ForeignKey(PaymentTypes)
     check_number = models.PositiveIntegerField(null=True)
     reported = models.BooleanField(default=False)
     staff_initials = models.CharField(max_length=4)
+    total = models.IntegerField()
 
     def __unicode__(self):
         return str(self.id)
+
+class Tickets_Transactions(models.Model):
+    ticket = models.ForeignKey(Tickets)
+    transactions = models.ForeignKey(Transactions)
 
 
 
