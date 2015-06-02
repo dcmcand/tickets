@@ -1,3 +1,6 @@
 <h1>Add a Transaction</h1>
 
-TODO: Write form
+{% csrf_token %}
+
+{% for form in formset %}
+{{ form.as_p }}

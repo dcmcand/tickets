@@ -8,6 +8,7 @@ urlpatterns = {
     url(r'^api/transactions/report/?$', views.TransactionReport.as_view()),
     url(r'^api/transactions/(?P<pk>[0-9]+)/?$', views.TransactionDetail.as_view()),
     url(r'^api/transactions/?$', views.TransactionList.as_view()),
+    url(r'^', views.TransactionForm.as_view()),
 }
 
 urlpatterns = format_suffix_patterns(urlpatterns)
