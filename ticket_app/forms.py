@@ -1,10 +1,10 @@
-from django.forms import ModelForm
+from django.forms import Form
 
 
-from .models import Transactions
+from .models import Tickets_Transactions
 
-class TransactionForm(ModelForm):
+class TicketsTransactionForm(Form):
     class Meta:
-        model = Transactions
-        fields = ['location', 'payment_type', 'check_number', 'staff_initials']
+        model = Tickets_Transactions
+        fields = ['ticket', 'transactions']
 

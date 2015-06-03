@@ -5,7 +5,7 @@ from ticket_app.serializers import TicketSerializer, TransactionSerializer
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView
 from django.http import HttpResponse
-from .forms import TransactionForm
+from .forms import TicketsTransactionForm
 from django.forms.formsets import formset_factory
 
 class TicketList(generics.ListCreateAPIView):
@@ -52,9 +52,13 @@ class TransactionReport(generics.ListAPIView):
 class TransactionForm(FormView):
     template_name = 'ticket_app/index.html'
     #form_class = TransactionForm
-    transactionformset = formset_factory(TransactionForm)
+    transactionformset = formset_factory(TicketsTransactionForm)
     form_class = transactionformset
     success_url = '/success/'
+
+
+
+
 
 
 
