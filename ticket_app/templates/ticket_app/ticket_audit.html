@@ -1,25 +1,46 @@
 {% include "ticket_app/header.html" %}
 <h2>Unsold Tickets</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Ticket Number</th>
-            <th>Location</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for t in tickets %}
-        <tr>
-            <td>{{ t.ticket_number }}</td>
-            <td>{{ t.location.name }}</td>
-        </tr>
-        {% endfor %}
 
-    </tbody>
+<div class="col-sm-6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Lebanon - {{ leb_tickets | length }} Unsold</th>
 
-</table>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in leb_tickets %}
+            <tr>
+                <td>{{ t.ticket_number }}</td>
 
+            </tr>
+            {% endfor %}
 
+        </tbody>
+
+    </table>
+</div>
+<div class="col-sm-6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kilton - {{ kpl_tickets | length }} Unsold</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in kpl_tickets %}
+            <tr>
+                <td>{{ t.ticket_number }}</td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+</div>
 
 {% include "ticket_app/footer.html" %}
