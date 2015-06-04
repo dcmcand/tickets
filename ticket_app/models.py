@@ -19,6 +19,7 @@ class Tickets(models.Model):
     ticket_number = models.PositiveIntegerField(unique=True)
     date_entered = models.DateField(auto_now_add=True)
     sold = models.BooleanField(default=False)
+    date_sold = models.DateField(blank=True, null=True)
     location = models.ForeignKey(Locations)
     def __unicode__(self):
         return str(self.ticket_number)

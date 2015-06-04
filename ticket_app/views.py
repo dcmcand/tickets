@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic.base import TemplateView, View
-from .models import Transactions, Tickets
+from .models import Transactions, Tickets, Locations
 from .serializers import TicketSerializer, TransactionSerializer
 from .forms import TicketsTransactionForm, AddTicketsForm
 
@@ -72,7 +72,23 @@ class AddTickets(generic.FormView):
     form_class = AddTicketsForm
     template_name = "ticket_app/add_tickets.html"
     success_url = '/success/'
-
+    def form_valid(self, form):
+        start = form.cleaned_data['start']
+        end = form.cleaned_data['end']
+        location = form.cleaned_data['location']
+        if str(location) == 'Leb':
+            for i in range(start, end + 1):
+                t = Tickets(ticket_number=i, location=Locations.objects.get(id=1))
+                t.save()
+        elif str(location) == 'KPL':
+            for i in range(start, end + 1):
+                t = Tickets(ticket_number=i, location=Locations.objects.get(id=2))
+                t.save()
+        if str(location) == "Leb":
+            loc = "Lebanon"
+        elif str(location) == "KPL":
+            loc = "Kilton"
+        return HttpResponse(content="You have added tickets from "+ str(start) + " to " + str(end) + " for " + str(loc))
 class ViewTransactions(TemplateView):
     template_name = 'ticket_app/view_transactions.html'
 

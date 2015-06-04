@@ -1,8 +1,10 @@
 {% include "ticket_app/header.html" %}
+
+
+<form method="POST" class="form" action="">
 {% csrf_token %}
+{{ form.as_table }}
 
-{% for f in form %}
-{{ f.as_p }}
-{% endfor %}
-
+<button type="submit" class="btn">Submit</button>
+</form>
 {% include "ticket_app/footer.html" %}

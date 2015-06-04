@@ -1,8 +1,7 @@
-from django.conf.urls import patterns, url
-from rest_framework.urlpatterns import format_suffix_patterns
+from django.conf.urls import url
 from . import views
 
-urlpatterns = {
+urlpatterns = [
 
     url(r'^success/$', views.Success.as_view()),
     url(r'^tickets/transactions/$', views.ViewTransactions.as_view()),
@@ -15,4 +14,4 @@ urlpatterns = {
     url(r'^api/transactions/(?P<pk>[0-9]+)/?$', views.ApiTransactionDetail.as_view()),
     url(r'^api/transactions/?$', views.ApiTransactionList.as_view()),
     url(r'^', views.TransactionForm.as_view()),
-}
+]
