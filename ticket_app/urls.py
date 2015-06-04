@@ -4,7 +4,10 @@ from . import views
 
 urlpatterns = {
 
-    # url(r'^tickets/audit/?$', views.TicketAudit),
+    url(r'^success/$', views.Success.as_view()),
+    url(r'^tickets/transactions/$', views.ViewTransactions.as_view()),
+    url(r'^tickets/transactions/add/?$', views.TransactionForm.as_view()),
+    url(r'^tickets/report/?$', views.GenerateReport.as_view()),
     url(r'^tickets/audit/?$', views.TicketAudit.as_view()),
     url(r'^tickets/?$', views.AddTickets.as_view()),
     url(r'^api/tickets/?$', views.ApiTicketList.as_view()),

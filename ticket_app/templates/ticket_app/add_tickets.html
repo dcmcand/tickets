@@ -1,6 +1,8 @@
 {% include "ticket_app/header.html" %}
 {% csrf_token %}
 
-{{ form.as_p }}
+{% for f in form %}
+{{ f.as_p }}
+{% endfor %}
 
 {% include "ticket_app/footer.html" %}

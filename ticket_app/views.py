@@ -1,13 +1,14 @@
 
 from rest_framework import generics
-from ticket_app.models import Transactions, Tickets
-from ticket_app.serializers import TicketSerializer, TransactionSerializer
 from django.utils.decorators import method_decorator
-from django.views import generic
-from django.http import HttpResponse
-from .forms import TicketsTransactionForm, AddTicketsForm
 from django.forms.formsets import formset_factory
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.views import generic
+from django.views.generic.base import TemplateView, View
+from .models import Transactions, Tickets
+from .serializers import TicketSerializer, TransactionSerializer
+from .forms import TicketsTransactionForm, AddTicketsForm
 
 class ApiTicketList(generics.ListCreateAPIView):
     """
@@ -71,6 +72,16 @@ class AddTickets(generic.FormView):
     form_class = AddTicketsForm
     template_name = "ticket_app/add_tickets.html"
     success_url = '/success/'
+
+class ViewTransactions(TemplateView):
+    template_name = 'ticket_app/view_transactions.html'
+
+class GenerateReport(TemplateView):
+    template_name = 'ticket_app/report.html'
+
+class Success(View):
+    def get(self):
+        return HttpResponse('Success')
 
 
 
