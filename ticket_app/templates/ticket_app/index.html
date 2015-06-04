@@ -1,10 +1,10 @@
+{% include "ticket_app/header.html" %}
 <h1>Add a Transaction</h1>
-
+{% load staticfiles%}
 {% csrf_token %}
 {{form.management_form}}
 
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 {% for f in form %}
 <div class='table'>
     <table class='no_error'>
@@ -13,10 +13,12 @@
     </div>
 {% endfor %}
 <input type="button" value="Add More" id="add_more">
-<script type="text/javascript" src="http://localhost/ticket_app/js/add_row.js"></script>
+<script type="text/javascript" src="{% static 'ticket_app/js/add_row.js' %}"></script>
 <script type="text/javascript">
 
     $('#add_more').click(function() {
         cloneMore('div.table:last', 'trans');
     });
 </script>
+
+{% include "ticket_app/footer.html" %}

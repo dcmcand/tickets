@@ -7,4 +7,3 @@ class TicketsTransactionForm(Form):
     class Meta:
         model = Tickets_Transactions
         fields = ['ticket', 'transactions']
-

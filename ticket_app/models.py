@@ -19,15 +19,15 @@ class Tickets(models.Model):
     ticket_number = models.PositiveIntegerField(unique=True)
     date_entered = models.DateField(auto_now_add=True)
     sold = models.BooleanField(default=False)
-    location = models.ForeignKey(Locations, to_field="name")
+    location = models.ForeignKey(Locations)
     def __unicode__(self):
         return str(self.ticket_number)
 
 class Transactions(models.Model):
     date = models.DateField(auto_now_add=True)
-    location = models.ForeignKey(Locations, to_field="name")
+    location = models.ForeignKey(Locations)
     payment_type = models.ForeignKey(PaymentTypes)
-    check_number = models.PositiveIntegerField(null=True)
+    check_number = models.PositiveIntegerField(null=True, blank=True)
     reported = models.BooleanField(default=False)
     staff_initials = models.CharField(max_length=4)
     total = models.IntegerField()
