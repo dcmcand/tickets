@@ -17,7 +17,8 @@ tickets_urls = [
 
 
 transactions_urls = [
-    url(r'^', views.TransactionsList.as_view(), name="Transactions List"),
+    url(r'^/?$', views.TransactionsList.as_view(), name="Transactions List"),
+    # url(r'^detail/?$', views.TransactionDetail, name="Transaction Detail"),
     url(r'^detail/(?P<pk>\d+)/?$', views.TransactionDetail.as_view(), name="Transaction Detail"),
     url(r'^add/?$', views.TransactionForm.as_view()),
     url(r'^report/?$', views.GenerateReport.as_view()),

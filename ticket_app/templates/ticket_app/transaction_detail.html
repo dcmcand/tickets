@@ -1,19 +1,14 @@
 {% include "ticket_app/header.html" %}
 
-<h1>View Transaction {{ transaction.pk }}</h1>
+<h1>View Transaction {{ object.pk }}</h1>
 
+<p>Date: {{ object.date | date }}</p>
+<p>Location: {{ object.location }}</p>
 
+{% for ticket in transaction_tickets %}
 
-<table class="table">
-    <tr>
-       <td> Date: </td>
-        <td>{{ transaction.date | date }}</td>
-    </tr>
-    <tr>
-        <td>Location:</td>
-        <td>{{ transaction.location }}</td>
-    </tr>
-</table>
+<p>ticket number: {{ ticket }} </p>
 
+{% endfor %}
 
 {% include "ticket_app/footer.html" %}

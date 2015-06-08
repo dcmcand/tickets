@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.views import generic
 from django.views.generic.base import TemplateView, View
 from django.shortcuts import render
-from .models import Transactions, Tickets, Locations
+from .models import Transactions, Tickets, Locations, Tickets_Transactions
 from .serializers import TicketSerializer, TransactionSerializer
 from .forms import TicketsTransactionForm, AddTicketsForm
 
@@ -100,6 +100,14 @@ class TransactionDetail(generic.DetailView):
     model = Transactions
     context_object_name = "transaction"
     template_name = "ticket_app/transaction_detail.html"
+    def get_context_data(self, **kwargs):
+        context = super(TransactionDetail, self).get_context_data(**kwargs)
+        context['transaction_tickets'] = Tickets_Transactions.objects.filter(transactions=context['transaction'].id).order_by('ticket')
+        print(context)
+        return context
+
+# def TransactionDetail(request):
+#     return render(request, 'ticket_app/transaction_detail.html')
 
 class GenerateReport(TemplateView):
     template_name = 'ticket_app/report.html'
