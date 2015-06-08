@@ -4,6 +4,12 @@
 
 {% for transaction in transactions %}
 
-{{ transaction }}
+<table class="table">
+    <tr>
+       <td> <a href="/transactions/detail/{{ transaction.id }}/ ">{{ transaction.date | date }}</a></td>
+        <td>{{transaction.location.name }}</td>
+    </tr>
+</table>
+{% endfor %}
 
 {% include "ticket_app/footer.html" %}

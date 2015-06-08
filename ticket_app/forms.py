@@ -5,7 +5,7 @@ from .models import Tickets_Transactions, Locations
 class TicketsTransactionForm(forms.ModelForm):
     class Meta:
         model = Tickets_Transactions
-        fields = ['ticket', 'transactions']
+        fields = ['ticket']
 
 
 class AddTicketsForm(forms.Form):

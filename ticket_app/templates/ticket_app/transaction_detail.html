@@ -1,0 +1,19 @@
+{% include "ticket_app/header.html" %}
+
+<h1>View Transaction {{ transaction.pk }}</h1>
+
+
+
+<table class="table">
+    <tr>
+       <td> Date: </td>
+        <td>{{ transaction.date | date }}</td>
+    </tr>
+    <tr>
+        <td>Location:</td>
+        <td>{{ transaction.location }}</td>
+    </tr>
+</table>
+
+
+{% include "ticket_app/footer.html" %}
