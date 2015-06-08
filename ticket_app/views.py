@@ -1,9 +1,7 @@
 
 from rest_framework import generics
-from django.utils.decorators import method_decorator
 from django.forms.formsets import formset_factory
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.views import generic
 from django.views.generic.base import TemplateView, View
 from .models import Transactions, Tickets, Locations
@@ -89,8 +87,10 @@ class AddTickets(generic.FormView):
         elif str(location) == "KPL":
             loc = "Kilton"
         return HttpResponse(content="You have added tickets from "+ str(start) + " to " + str(end) + " for " + str(loc))
-class ViewTransactions(TemplateView):
-    template_name = 'ticket_app/view_transactions.html'
+
+
+class TransactionsList(generic.ListView):
+    model = Transactions
 
 class GenerateReport(TemplateView):
     template_name = 'ticket_app/report.html'

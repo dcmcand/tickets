@@ -1,3 +1,9 @@
 {% include "ticket_app/header.html" %}
+
 <h1>View Transactions</h1>
+
+{% for transaction in transactions %}
+
+{{ transaction }}
+
 {% include "ticket_app/footer.html" %}
