@@ -2,12 +2,18 @@
 
 <h1>View Transaction {{ object.pk }}</h1>
 
+<p><strong>Total: ${{ object.total }}</strong></p>
 <p>Date: {{ object.date | date }}</p>
 <p>Location: {{ object.location }}</p>
+<p>Staff Initials: {{object.staff_initials }}</p>
+<p>Payment Type: {{object.payment_type }}</p>
+<p>Check Number: {{ object.check_number }}</p>
+<p>Reported: {{ object.reported }}</p>
 
+<p><u>Ticket Numbers</u></p>
 {% for ticket in transaction_tickets %}
 
-<p>ticket number: {{ ticket }} </p>
+<p>{{ ticket.ticket }}</p>
 
 {% endfor %}
 

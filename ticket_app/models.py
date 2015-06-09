@@ -18,7 +18,10 @@ class Locations(models.Model):
 class Tickets(models.Model):
     ticket_number = models.PositiveIntegerField(unique=True)
     date_entered = models.DateField(auto_now_add=True)
-    sold = models.BooleanField(default=False)
+    def sold(self):
+        if self in Tickets_Transactions.objects.all():
+            return True
+        return False
     date_sold = models.DateField(blank=True, null=True)
     location = models.ForeignKey(Locations)
     def __unicode__(self):
@@ -31,13 +34,17 @@ class Transactions(models.Model):
     check_number = models.PositiveIntegerField(null=True, blank=True)
     reported = models.BooleanField(default=False)
     staff_initials = models.CharField(max_length=4)
-    total = models.IntegerField()
+    def total(self):
+        tickets = Tickets_Transactions.objects.filter(transactions=self.id).count()
+        total = tickets * 10
+        return total
+    date_reported = models.DateField(blank=True, null=True)
 
     def __unicode__(self):
         return str(self.id)
 
 class Tickets_Transactions(models.Model):
-    ticket = models.ForeignKey(Tickets)
+    ticket = models.OneToOneField(Tickets, unique=True)
     transactions = models.ForeignKey(Transactions)
 
 

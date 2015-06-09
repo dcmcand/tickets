@@ -70,7 +70,7 @@ class TicketAudit(generic.ListView):
 class AddTickets(generic.FormView):
     form_class = AddTicketsForm
     template_name = "ticket_app/add_tickets.html"
-    success_url = '/success/'
+    success_url = '/'
     def form_valid(self, form):
         start = form.cleaned_data['start']
         end = form.cleaned_data['end']
@@ -102,12 +102,9 @@ class TransactionDetail(generic.DetailView):
     template_name = "ticket_app/transaction_detail.html"
     def get_context_data(self, **kwargs):
         context = super(TransactionDetail, self).get_context_data(**kwargs)
-        context['transaction_tickets'] = Tickets_Transactions.objects.filter(transactions=context['transaction'].id).order_by('ticket')
-        print(context)
-        return context
 
-# def TransactionDetail(request):
-#     return render(request, 'ticket_app/transaction_detail.html')
+        context['transaction_tickets'] = Tickets_Transactions.objects.filter(transactions = context['transaction'].id)
+        return context
 
 class GenerateReport(TemplateView):
     template_name = 'ticket_app/report.html'
