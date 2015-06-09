@@ -2,20 +2,21 @@ from django import forms
 from .models import Tickets_Transactions, Locations
 
 
-class TicketsTransactionForm(forms.ModelForm):
-    class Meta:
-        model = Tickets_Transactions
-        fields = ['ticket']
-
+def get_locations():
+    
+    locations = Locations.objects.all()
+    choices = []
+    for l in locations:
+        choices.append((l.id, l.name))
+    return choices
+class TicketsTransactionForm(forms.Form):
+    pass
 
 class AddTicketsForm(forms.Form):
-    locations = (
-        ('Leb','Lebanon'),
-        ('KPL','Kilton')
-    )
-    # locations = Locations.objects.all()
-    # for l in locations:
-    #     form_choices.append(l.name)
-    location = forms.ChoiceField(choices=locations)
+    location = forms.ChoiceField(choices=get_locations())
     start = forms.IntegerField(max_value=999999, min_value=99999)
     end = forms.IntegerField(max_value=999999, min_value=99999)
+
+
+class LocationForm(forms.Form):
+    location = forms.ChoiceField(choices=get_locations())

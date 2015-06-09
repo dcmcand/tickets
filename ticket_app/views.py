@@ -7,7 +7,7 @@ from django.views.generic.base import TemplateView, View
 from django.shortcuts import render
 from .models import Transactions, Tickets, Locations, Tickets_Transactions
 from .serializers import TicketSerializer, TransactionSerializer
-from .forms import TicketsTransactionForm, AddTicketsForm
+from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm
 
 class ApiTicketList(generics.ListCreateAPIView):
     """
@@ -75,18 +75,12 @@ class AddTickets(generic.FormView):
         start = form.cleaned_data['start']
         end = form.cleaned_data['end']
         location = form.cleaned_data['location']
-        if str(location) == 'Leb':
-            for i in range(start, end + 1):
-                t = Tickets(ticket_number=i, location=Locations.objects.get(id=1))
-                t.save()
-        elif str(location) == 'KPL':
-            for i in range(start, end + 1):
-                t = Tickets(ticket_number=i, location=Locations.objects.get(id=2))
-                t.save()
-        if str(location) == "Leb":
-            loc = "Lebanon"
-        elif str(location) == "KPL":
-            loc = "Kilton"
+
+        for i in range(start, end +1):
+	    t = Tickets(ticket_number=i, location=Locations.objects.get(id=location))
+	    t.save()
+
+        loc = Locations.objects.get(id=location).name
         return HttpResponse(content="You have added tickets from "+ str(start) + " to " + str(end) + " for " + str(loc))
 
 
@@ -106,8 +100,9 @@ class TransactionDetail(generic.DetailView):
         context['transaction_tickets'] = Tickets_Transactions.objects.filter(transactions = context['transaction'].id)
         return context
 
-class GenerateReport(TemplateView):
+class GenerateReport(generic.FormView):
     template_name = 'ticket_app/report.html'
+    form_class = LocationForm
 
 class Success(View):
     def get(self):

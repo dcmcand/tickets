@@ -21,12 +21,12 @@ transactions_urls = [
     # url(r'^detail/?$', views.TransactionDetail, name="Transaction Detail"),
     url(r'^detail/(?P<pk>\d+)/?$', views.TransactionDetail.as_view(), name="Transaction Detail"),
     url(r'^add/?$', views.TransactionForm.as_view()),
-    url(r'^report/?$', views.GenerateReport.as_view()),
 ]
 
 
 urlpatterns = [
 
+    url(r'^report/?$', views.GenerateReport.as_view()),
     url(r'^success/$', views.Success.as_view()),
     url(r'^tickets/', include(tickets_urls)),
     url(r'^api/', include(api_urls)),
