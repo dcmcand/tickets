@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 # Create your models here.
 from django.db import models
 
@@ -18,10 +18,7 @@ class Locations(models.Model):
 class Tickets(models.Model):
     ticket_number = models.PositiveIntegerField(unique=True)
     date_entered = models.DateField(auto_now_add=True)
-    def sold(self):
-        if self in Tickets_Transactions.objects.all():
-            return True
-        return False
+    sold = models.BooleanField(default=False)
     date_sold = models.DateField(blank=True, null=True)
     location = models.ForeignKey(Locations)
     def __unicode__(self):
@@ -46,6 +43,12 @@ class Transactions(models.Model):
 class Tickets_Transactions(models.Model):
     ticket = models.OneToOneField(Tickets, unique=True)
     transactions = models.ForeignKey(Transactions)
+    def save(self, *args, **kwargs):
+        super(Tickets_Transactions, self).save(*args, **kwargs)
+        ticket = self.ticket
+        ticket.sold=True
+        ticket.date_sold = datetime.now()
+        ticket.save()
 
 
 
