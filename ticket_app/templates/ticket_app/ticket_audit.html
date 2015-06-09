@@ -1,46 +1,21 @@
 {% include "ticket_app/header.html" %}
 <h2>Unsold Tickets</h2>
-
-
+               {% for location in locations.values %} 
 <div class="col-sm-6">
     <table class="table">
         <thead>
             <tr>
-                <th>Lebanon - {{ leb_tickets | length }} Unsold</th>
+                <th>{{ location.name }} - {{ location.tickets | length }} Unsold</th>
 
             </tr>
         </thead>
         <tbody>
-            {% for t in leb_tickets %}
+{% for ticket in location.tickets %}
             <tr>
-                <td>{{ t.ticket_number }}</td>
-
+                <td>{{ticket.ticket_number}}</td>
             </tr>
-            {% endfor %}
-
-        </tbody>
-
+{% endfor %}
     </table>
 </div>
-<div class="col-sm-6">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Kilton - {{ kpl_tickets | length }} Unsold</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            {% for t in kpl_tickets %}
-            <tr>
-                <td>{{ t.ticket_number }}</td>
-
-            </tr>
-            {% endfor %}
-
-        </tbody>
-
-    </table>
-</div>
-
+{% endfor %}
 {% include "ticket_app/footer.html" %}

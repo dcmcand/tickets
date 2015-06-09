@@ -2,9 +2,9 @@
 
 <h1>View Transactions</h1>
 
-
+{% for location in locations %}
 <div class="col-md-6">
-    <h2>Lebanon</h2>
+    <h2>{{ location.1 }}</h2>
     <table class="table">
     <thead>
         <th>Transaction Date</th>
@@ -13,7 +13,7 @@
     </thead>
         <tbody>
         {% for transaction in transactions  %}
-            {% if transaction.location.id = 1 %}
+            {% if transaction.location.id = location.0 %}
                 <tr>
                    <td> <a href="/transactions/detail/{{transaction.id}}/">{{ transaction.date | date }}</a></td>
                     <td>${{ transaction.total }}</td>
@@ -31,34 +31,6 @@
     </table>
 </div>
 
-<div class="col-md-6">
-    <h2>Kilton</h2>
-    <table class="table">
- <thead>
-        <th>Transaction Date</th>
-    <th>Transaction Total</th>
-    <th>Date Reported</th>
-    </thead>
-        <tbody>
-        {% for transaction in transactions  %}
-            {% if transaction.location.id = 2 %}
-                <tr>
-                   <td> <a href="/transactions/detail/{{transaction.id}}/">{{ transaction.date | date }}</a></td>
-                    <td>${{ transaction.total }}</td>
-                    <td>
-                        {%if transaction.reported %}
-                        {{ transaction.date_reported }}
-                        {% endif %}
-
-                    </td>
-
-                </tr>
-            {% endif%}
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-
+{% endfor %}
 
 {% include "ticket_app/footer.html" %}

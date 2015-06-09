@@ -7,7 +7,7 @@ from django.views.generic.base import TemplateView, View
 from django.shortcuts import render
 from .models import Transactions, Tickets, Locations, Tickets_Transactions
 from .serializers import TicketSerializer, TransactionSerializer
-from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm
+from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm, get_locations
 
 class ApiTicketList(generics.ListCreateAPIView):
     """
@@ -63,8 +63,14 @@ class TicketAudit(generic.ListView):
     template_name = "ticket_app/ticket_audit.html"
     def get_context_data(self, **kwargs):
         context = super(TicketAudit, self).get_context_data(**kwargs)
-        context['leb_tickets'] = Tickets.objects.exclude(sold=True).filter(location=1).order_by('ticket_number')
-        context['kpl_tickets'] = Tickets.objects.exclude(sold=True).filter(location=2).order_by('ticket_number')
+        location_dict = {}
+        for location in Locations.objects.all():
+            location_dict[location.id] = {
+                'id': location.id,
+                'name': location.name,
+                'tickets':  Tickets.objects.filter(location = location.id),
+            }
+        context['locations'] = location_dict
         return context
 
 class AddTickets(generic.FormView):
@@ -88,7 +94,10 @@ class TransactionsList(generic.ListView):
     model = Transactions
     context_object_name = "transactions"
     template_name = "ticket_app/view_transactions.html"
-
+    def get_context_data(self, **kwargs):
+        context = super(TransactionsList, self).get_context_data(**kwargs)
+        context['locations'] = get_locations()
+        return context
 
 class TransactionDetail(generic.DetailView):
     model = Transactions
