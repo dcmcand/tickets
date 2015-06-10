@@ -1,13 +1,13 @@
 
 from rest_framework import generics
 from django.forms.formsets import formset_factory
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.views.generic.base import TemplateView, View
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from .models import Transactions, Tickets, Locations, Tickets_Transactions
 from .serializers import TicketSerializer, TransactionSerializer
-from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm, get_locations
+from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm, get_locations, TransactionForm
 
 class ApiTicketList(generics.ListCreateAPIView):
     """
@@ -51,11 +51,23 @@ class ApiTransactionReport(generics.ListAPIView):
     serializer_class = TransactionSerializer
 
 class TransactionForm(generic.FormView):
+    form_class = TransactionForm
     template_name = 'ticket_app/index.html'
-    #form_class = TicketsTransactionForm
-    transactionformset = formset_factory(TicketsTransactionForm)
-    form_class = transactionformset
-    success_url = '/success/'
+    success_url = '/'
+
+# def TransactionForm(request):
+#     if request.method == "POST":
+#         transaction_form = TransactionForm(request.POST, instance=Transaction())
+#         # transactionformset = formset_factory(TicketsTransactionForm)
+#         ticket_form = TicketsTransactionForm(request.POST, instance=Ticket())
+#         if transaction_form.is_valid() and ticket_form.is_valid():
+#             transaction = transaction_form.save()
+#     else:
+#         transaction_form = TransactionForm
+#         # transactionformset = formset_factory(TicketsTransactionForm)
+#         ticket_form = TicketsTransactionForm
+#     return render_to_response('ticket_app/index.html', {'transaction': transaction_form, 'ticket': ticket_form,})
+
 
 class TicketAudit(generic.ListView):
     queryset = Tickets.objects.exclude(sold=True)
@@ -83,8 +95,8 @@ class AddTickets(generic.FormView):
         location = form.cleaned_data['location']
 
         for i in range(start, end +1):
-	    t = Tickets(ticket_number=i, location=Locations.objects.get(id=location))
-	    t.save()
+            t = Tickets(ticket_number=i, location=Locations.objects.get(id=location))
+            t.save()
 
         loc = Locations.objects.get(id=location).name
         return HttpResponse(content="You have added tickets from "+ str(start) + " to " + str(end) + " for " + str(loc))
