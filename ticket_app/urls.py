@@ -31,5 +31,5 @@ urlpatterns = [
     url(r'^tickets/', include(tickets_urls)),
     url(r'^api/', include(api_urls)),
     url(r'^transactions/', include(transactions_urls)),
-    url(r'^/?$', views.TransactionForm.as_view()),
+    url(r'^/?$', views.AddTransaction),
 ]

@@ -1,16 +1,28 @@
 {% include "ticket_app/header.html" %}
 <h1>Add a Transaction</h1>
 {% load staticfiles%}
+{{form.management_form}}
+
+<form class="form" method="post" action="">
 {% csrf_token %}
 
+{{form.as_p}}
 
-<!--{{ticket.as_table}}-->
-{{ form.as_table }}
+{% for f in form2 %}
+<div class='table'>
+    <table class='no_error'>
+        {{ form2.as_table }}
+    </table>
+    </div>
+{% endfor %}
 
+<input type="button" class="btn btn-default btn-sm" value="Add More" id="add_more">
 <br />
-<input type="button" value="Add More" id="add_more">
-<br/>
-<input type="submit">
+<input class='btn btn-default' type="submit" id="submit" value="submit">
+
+</form>
+
+
 <script type="text/javascript" src="{% static 'ticket_app/js/add_row.js' %}"></script>
 <script type="text/javascript">
 

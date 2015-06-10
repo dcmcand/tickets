@@ -8,6 +8,7 @@ from django.shortcuts import render, render_to_response
 from .models import Transactions, Tickets, Locations, Tickets_Transactions
 from .serializers import TicketSerializer, TransactionSerializer
 from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm, get_locations, TransactionForm
+from django.template import RequestContext
 
 class ApiTicketList(generics.ListCreateAPIView):
     """
@@ -50,23 +51,19 @@ class ApiTransactionReport(generics.ListAPIView):
     queryset = Transactions.objects.exclude(reported=True)
     serializer_class = TransactionSerializer
 
-class TransactionForm(generic.FormView):
-    form_class = TransactionForm
-    template_name = 'ticket_app/index.html'
-    success_url = '/'
 
-# def TransactionForm(request):
-#     if request.method == "POST":
-#         transaction_form = TransactionForm(request.POST, instance=Transaction())
-#         # transactionformset = formset_factory(TicketsTransactionForm)
-#         ticket_form = TicketsTransactionForm(request.POST, instance=Ticket())
-#         if transaction_form.is_valid() and ticket_form.is_valid():
-#             transaction = transaction_form.save()
-#     else:
-#         transaction_form = TransactionForm
-#         # transactionformset = formset_factory(TicketsTransactionForm)
-#         ticket_form = TicketsTransactionForm
-#     return render_to_response('ticket_app/index.html', {'transaction': transaction_form, 'ticket': ticket_form,})
+def AddTransaction(request):
+    if request.method == "POST":
+        transaction_form = TransactionForm(request.POST, instance=Transactions())
+        ticket_form = formset_factory(TicketsTransactionForm)
+        # ticket_form = TicketsTransactionForm(request.POST, instance=Ticket())
+        if transaction_form.is_valid() and ticket_form.is_valid():
+            transaction = transaction_form.save()
+    else:
+        transaction_form = TransactionForm()
+        ticket_form = formset_factory(TicketsTransactionForm)
+        # ticket_form = TicketsTransactionForm()
+    return render(request, 'ticket_app/index.html', {'form': transaction_form, 'form2': ticket_form})
 
 
 class TicketAudit(generic.ListView):

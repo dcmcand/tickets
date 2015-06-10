@@ -32,4 +32,5 @@ class LocationForm(Form):
 class TransactionForm(ModelForm):
     class Meta:
         model = Transactions
-        fields = ['location']
+        fields = ['location', 'staff_initials', 'payment_type', 'check_number']
+
