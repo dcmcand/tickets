@@ -8,6 +8,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/forms.py" afterPath="$PROJECT_DIR$/ticket_app/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html" afterPath="$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/models.py" afterPath="$PROJECT_DIR$/ticket_app/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/urls.py" afterPath="$PROJECT_DIR$/ticket_app/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/views.py" afterPath="$PROJECT_DIR$/ticket_app/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -35,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/ticket_app/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="e#0#80#0" expanded="true" />
               </folding>
@@ -46,18 +47,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.875">
-              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_tickets.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/add_tickets.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-10.0">
+              <caret line="21" column="98" selection-start-line="17" selection-start-column="12" selection-end-line="21" selection-end-column="98" />
               <folding />
             </state>
           </provider>
@@ -66,15 +57,15 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ticket_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39862543">
-              <caret line="56" column="78" selection-start-line="56" selection-start-column="78" selection-end-line="56" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.44347826">
+              <caret line="56" column="32" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
               <folding>
                 <element signature="e#1#36#0" expanded="true" />
-                <element signature="e#633#804#0" expanded="false" />
-                <element signature="e#854#1019#0" expanded="false" />
-                <element signature="e#1080#1271#0" expanded="false" />
-                <element signature="e#1344#1536#0" expanded="false" />
-                <element signature="e#1592#1780#0" expanded="false" />
+                <element signature="e#577#748#0" expanded="false" />
+                <element signature="e#798#963#0" expanded="false" />
+                <element signature="e#1024#1215#0" expanded="false" />
+                <element signature="e#1288#1480#0" expanded="false" />
+                <element signature="e#1536#1724#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -84,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/ticket_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <caret line="51" column="70" selection-start-line="51" selection-start-column="70" selection-end-line="51" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -104,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/ticket_app/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+              <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -134,8 +125,8 @@
         <option value="$PROJECT_DIR$/ticket_app/admin.py" />
         <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/transaction_detail.html" />
         <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/view_transactions.html" />
-        <option value="$PROJECT_DIR$/ticket_app/models.py" />
         <option value="$PROJECT_DIR$/ticket_app/urls.py" />
+        <option value="$PROJECT_DIR$/ticket_app/models.py" />
         <option value="$PROJECT_DIR$/ticket_app/forms.py" />
         <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html" />
         <option value="$PROJECT_DIR$/ticket_app/views.py" />
@@ -174,8 +165,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -476,22 +467,22 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671958" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994709" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955848" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671958" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994709" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -512,6 +503,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ticket_app/models.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -520,7 +518,7 @@
           <properties exception="BaseException" />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -529,7 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -537,7 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -563,7 +559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -587,11 +582,11 @@
           <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#633#804#0" expanded="false" />
-            <element signature="e#854#1019#0" expanded="false" />
-            <element signature="e#1080#1271#0" expanded="false" />
-            <element signature="e#1344#1536#0" expanded="false" />
-            <element signature="e#1592#1780#0" expanded="false" />
+            <element signature="e#577#748#0" expanded="false" />
+            <element signature="e#798#963#0" expanded="false" />
+            <element signature="e#1024#1215#0" expanded="false" />
+            <element signature="e#1288#1480#0" expanded="false" />
+            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -642,11 +637,11 @@
           <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#633#804#0" expanded="false" />
-            <element signature="e#854#1019#0" expanded="false" />
-            <element signature="e#1080#1271#0" expanded="false" />
-            <element signature="e#1344#1536#0" expanded="false" />
-            <element signature="e#1592#1780#0" expanded="false" />
+            <element signature="e#577#748#0" expanded="false" />
+            <element signature="e#798#963#0" expanded="false" />
+            <element signature="e#1024#1215#0" expanded="false" />
+            <element signature="e#1288#1480#0" expanded="false" />
+            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -690,11 +685,11 @@
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#633#804#0" expanded="false" />
-            <element signature="e#854#1019#0" expanded="false" />
-            <element signature="e#1080#1271#0" expanded="false" />
-            <element signature="e#1344#1536#0" expanded="false" />
-            <element signature="e#1592#1780#0" expanded="false" />
+            <element signature="e#577#748#0" expanded="false" />
+            <element signature="e#798#963#0" expanded="false" />
+            <element signature="e#1024#1215#0" expanded="false" />
+            <element signature="e#1288#1480#0" expanded="false" />
+            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -760,11 +755,11 @@
           <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#633#804#0" expanded="false" />
-            <element signature="e#854#1019#0" expanded="false" />
-            <element signature="e#1080#1271#0" expanded="false" />
-            <element signature="e#1344#1536#0" expanded="false" />
-            <element signature="e#1592#1780#0" expanded="false" />
+            <element signature="e#577#748#0" expanded="false" />
+            <element signature="e#798#963#0" expanded="false" />
+            <element signature="e#1024#1215#0" expanded="false" />
+            <element signature="e#1288#1480#0" expanded="false" />
+            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -812,11 +807,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#633#804#0" expanded="false" />
-            <element signature="e#854#1019#0" expanded="false" />
-            <element signature="e#1080#1271#0" expanded="false" />
-            <element signature="e#1344#1536#0" expanded="false" />
-            <element signature="e#1592#1780#0" expanded="false" />
+            <element signature="e#577#748#0" expanded="false" />
+            <element signature="e#798#963#0" expanded="false" />
+            <element signature="e#1024#1215#0" expanded="false" />
+            <element signature="e#1288#1480#0" expanded="false" />
+            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -876,7 +871,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -884,7 +878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -892,7 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6183746">
           <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -912,14 +904,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ticket_app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/add_tickets.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -928,18 +912,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ticket_app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ticket_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <caret line="51" column="70" selection-start-line="51" selection-start-column="70" selection-end-line="51" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="21" column="98" selection-start-line="17" selection-start-column="12" selection-end-line="21" selection-end-column="98" />
           <folding />
         </state>
       </provider>
@@ -947,7 +939,7 @@
     <entry file="file://$PROJECT_DIR$/ticket_app/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="e#0#80#0" expanded="true" />
           </folding>
@@ -956,15 +948,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ticket_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39862543">
-          <caret line="56" column="78" selection-start-line="56" selection-start-column="78" selection-end-line="56" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.44347826">
+          <caret line="56" column="32" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#633#804#0" expanded="false" />
-            <element signature="e#854#1019#0" expanded="false" />
-            <element signature="e#1080#1271#0" expanded="false" />
-            <element signature="e#1344#1536#0" expanded="false" />
-            <element signature="e#1592#1780#0" expanded="false" />
+            <element signature="e#577#748#0" expanded="false" />
+            <element signature="e#798#963#0" expanded="false" />
+            <element signature="e#1024#1215#0" expanded="false" />
+            <element signature="e#1288#1480#0" expanded="false" />
+            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>

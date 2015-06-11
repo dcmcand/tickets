@@ -3,24 +3,30 @@
 {% load staticfiles%}
 {{form.management_form}}
 
+
+
+
+
+<div class='table'>
+
 <form class="form" method="post" action="">
+
 {% csrf_token %}
 
 {{form.as_p}}
 
-{% for f in form2 %}
-<div class='table'>
-    <table class='no_error'>
-        {{ form2.as_table }}
-    </table>
-    </div>
-{% endfor %}
+    <!-- -->
+        <!--{% for f in form2 %}-->
+        <!--{{ form2}}-->
+        <!--{% endfor %}-->
+ <!--<input type="button" class="btn btn-default btn-sm" value="Add Another Ticket" id="add_more">-->
 
-<input type="button" class="btn btn-default btn-sm" value="Add More" id="add_more">
-<br />
 <input class='btn btn-default' type="submit" id="submit" value="submit">
 
+
 </form>
+    </div>
+
 
 
 <script type="text/javascript" src="{% static 'ticket_app/js/add_row.js' %}"></script>
@@ -29,6 +35,10 @@
     $('#add_more').click(function() {
         cloneMore('div.table:last', 'trans');
     });
+    $('#submit').click(function(){
+        ('#form2').submit()
+    });
+
 </script>
 
 {% include "ticket_app/footer.html" %}
