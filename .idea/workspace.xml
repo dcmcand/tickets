@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="148c17d9-208f-4609-a8f9-4a9bf2e585af" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/forms.py" afterPath="$PROJECT_DIR$/ticket_app/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/templates/ticket_app/header.html" afterPath="$PROJECT_DIR$/ticket_app/templates/ticket_app/header.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html" afterPath="$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/models.py" afterPath="$PROJECT_DIR$/ticket_app/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/urls.py" afterPath="$PROJECT_DIR$/ticket_app/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/views.py" afterPath="$PROJECT_DIR$/ticket_app/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -32,14 +31,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ticket_app/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#80#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.37391305">
+              <caret line="18" column="82" selection-start-line="18" selection-start-column="82" selection-end-line="18" selection-end-column="82" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,26 +44,33 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0">
-              <caret line="21" column="98" selection-start-line="17" selection-start-column="12" selection-end-line="21" selection-end-column="98" />
-              <folding />
+            <state vertical-scroll-proportion="-8.75">
+              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <folding>
+                <marker date="1434401147257" expanded="true" signature="691:783" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ticket_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44347826">
-              <caret line="56" column="32" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
               <folding>
                 <element signature="e#1#36#0" expanded="true" />
-                <element signature="e#577#748#0" expanded="false" />
-                <element signature="e#798#963#0" expanded="false" />
-                <element signature="e#1024#1215#0" expanded="false" />
-                <element signature="e#1288#1480#0" expanded="false" />
-                <element signature="e#1536#1724#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/header.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.125">
+              <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,8 +79,10 @@
         <entry file="file://$PROJECT_DIR$/ticket_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="70" selection-start-line="51" selection-start-column="70" selection-end-line="51" selection-end-column="70" />
-              <folding />
+              <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+              <folding>
+                <marker date="1434142431000" expanded="true" signature="552:683" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/ticket_app/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+              <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -118,18 +124,18 @@
         <option value="$PROJECT_DIR$/tickets/settings.py" />
         <option value="/var/www/ticket_app/js/add_row.js" />
         <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/report.html" />
-        <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/header.html" />
         <option value="$PROJECT_DIR$/tickets/urls.py" />
         <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/add_tickets.html" />
         <option value="$PROJECT_DIR$/ticket_app/serializers.py" />
         <option value="$PROJECT_DIR$/ticket_app/admin.py" />
         <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/transaction_detail.html" />
         <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/view_transactions.html" />
-        <option value="$PROJECT_DIR$/ticket_app/urls.py" />
         <option value="$PROJECT_DIR$/ticket_app/models.py" />
-        <option value="$PROJECT_DIR$/ticket_app/forms.py" />
+        <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/header.html" />
         <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html" />
+        <option value="$PROJECT_DIR$/ticket_app/urls.py" />
         <option value="$PROJECT_DIR$/ticket_app/views.py" />
+        <option value="$PROJECT_DIR$/ticket_app/forms.py" />
       </list>
     </option>
   </component>
@@ -166,7 +172,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -237,6 +242,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -461,7 +467,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1682" height="1024" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -469,20 +475,20 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671958" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994709" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955848" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671958" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994709" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -523,13 +529,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/view_transactions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ticket_app/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -549,9 +548,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#80#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -582,11 +579,6 @@
           <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#577#748#0" expanded="false" />
-            <element signature="e#798#963#0" expanded="false" />
-            <element signature="e#1024#1215#0" expanded="false" />
-            <element signature="e#1288#1480#0" expanded="false" />
-            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -603,7 +595,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1434142431000" expanded="true" signature="552:683" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -611,9 +605,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#80#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -637,11 +629,6 @@
           <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#577#748#0" expanded="false" />
-            <element signature="e#798#963#0" expanded="false" />
-            <element signature="e#1024#1215#0" expanded="false" />
-            <element signature="e#1288#1480#0" expanded="false" />
-            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -658,7 +645,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1434142431000" expanded="true" signature="552:683" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -666,9 +655,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#80#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -685,11 +672,6 @@
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#577#748#0" expanded="false" />
-            <element signature="e#798#963#0" expanded="false" />
-            <element signature="e#1024#1215#0" expanded="false" />
-            <element signature="e#1288#1480#0" expanded="false" />
-            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -706,7 +688,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-          <folding />
+          <folding>
+            <marker date="1434142431000" expanded="true" signature="552:683" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -714,9 +698,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#80#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +720,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-          <folding />
+          <folding>
+            <marker date="1434142431000" expanded="true" signature="552:683" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -755,11 +739,6 @@
           <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#577#748#0" expanded="false" />
-            <element signature="e#798#963#0" expanded="false" />
-            <element signature="e#1024#1215#0" expanded="false" />
-            <element signature="e#1288#1480#0" expanded="false" />
-            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -790,7 +769,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-          <folding />
+          <folding>
+            <marker date="1434142431000" expanded="true" signature="552:683" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -807,11 +788,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#577#748#0" expanded="false" />
-            <element signature="e#798#963#0" expanded="false" />
-            <element signature="e#1024#1215#0" expanded="false" />
-            <element signature="e#1288#1480#0" expanded="false" />
-            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -842,7 +818,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1434142431000" expanded="true" signature="552:683" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -900,7 +878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29896906">
           <caret line="307" column="6" selection-start-line="307" selection-start-column="6" selection-end-line="307" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -908,6 +885,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ticket_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+          <folding>
+            <marker date="1434142431000" expanded="true" signature="552:683" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.125">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -915,49 +909,36 @@
     <entry file="file://$PROJECT_DIR$/ticket_app/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ticket_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="70" selection-start-line="51" selection-start-column="70" selection-end-line="51" selection-end-column="70" />
+          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="21" column="98" selection-start-line="17" selection-start-column="12" selection-end-line="21" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ticket_app/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state vertical-scroll-proportion="-8.75">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding>
-            <element signature="e#0#80#0" expanded="true" />
+            <marker date="1434401147257" expanded="true" signature="691:783" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ticket_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44347826">
-          <caret line="56" column="32" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
-            <element signature="e#577#748#0" expanded="false" />
-            <element signature="e#798#963#0" expanded="false" />
-            <element signature="e#1024#1215#0" expanded="false" />
-            <element signature="e#1288#1480#0" expanded="false" />
-            <element signature="e#1536#1724#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ticket_app/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37391305">
+          <caret line="18" column="82" selection-start-line="18" selection-start-column="82" selection-end-line="18" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>

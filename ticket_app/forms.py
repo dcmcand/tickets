@@ -16,7 +16,7 @@ class TicketsTransactionForm(Form):
     choices = []
     for t in tickets:
         choices.append((t.id, t.ticket_number))
-    ticket_number = ChoiceField(choices=choices, widget=NumberInput)
+    ticket_number = ChoiceField(choices=choices, widget=NumberInput, required=True)
 
 
 
@@ -32,5 +32,5 @@ class LocationForm(Form):
 class TransactionForm(ModelForm):
     class Meta:
         model = Transactions
-        exclude = ['date', 'date_reported']
+        exclude = ['date', 'date_reported', 'reported']
 

@@ -7,7 +7,7 @@
 
 
 
-<div class='table'>
+
 
 <form class="form" method="post" action="">
 
@@ -15,17 +15,19 @@
 
 {{form.as_p}}
 
-    <!-- -->
-        <!--{% for f in form2 %}-->
-        <!--{{ form2}}-->
-        <!--{% endfor %}-->
- <!--<input type="button" class="btn btn-default btn-sm" value="Add Another Ticket" id="add_more">-->
+     <div class='table'>
+        {% for f in form2 %}
+
+        {{ form2}}
+        {% endfor %}
+        </div>
+ <input type="button" class="btn btn-default btn-sm" value="Add Another Ticket" id="add_more">
 
 <input class='btn btn-default' type="submit" id="submit" value="submit">
 
 
 </form>
-    </div>
+
 
 
 

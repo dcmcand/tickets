@@ -4,6 +4,7 @@ from django.forms.formsets import formset_factory
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.views.generic.base import TemplateView, View
+from django.shortcuts import render
 from .models import Transactions, Tickets, Locations, Tickets_Transactions
 from .serializers import TicketSerializer, TransactionSerializer
 from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm, get_locations, TransactionForm
@@ -51,21 +52,34 @@ class ApiTransactionReport(generics.ListAPIView):
     serializer_class = TransactionSerializer
 
 
-class AddTransaction(generic.FormView):
-    message=""
-    form2 = formset_factory(TicketsTransactionForm,extra=1)
-    form_class = TransactionForm
-    template_name = 'ticket_app/index.html'
-    success_url = '/'
+class AddTransaction(View):
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(AddTransaction, self).get_context_data()
-    #     context['form2'] = form2()
-    #     return context
 
-    def form_valid(self, form):
-        form.save()
-        return HttpResponseRedirect('/')
+    def get(self, request, *args, **kwargs):
+        form2 = formset_factory(TicketsTransactionForm,extra=1)
+        form = TransactionForm
+        context = {
+        'form2': form2,
+        'form': form
+    }
+        return render(request, 'ticket_app/index.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = TransactionForm(request.POST)
+        formset = formset_factory(TicketsTransactionForm,extra=1)
+        form2 = formset(request.POST)
+        if form.is_valid() and form2.is_valid():
+            return HttpResponse('Form is Valid')
+
+        else:
+            context = {
+                'form': form,
+                'form2': form2
+            }
+            return render(request, 'ticket_app/index.html', context)
+
+
+
 
 
 
