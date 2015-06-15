@@ -1,6 +1,7 @@
 
 from rest_framework import generics
 from django.forms.formsets import formset_factory
+from django.forms.formsets import BaseFormSet
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.views.generic.base import TemplateView, View
@@ -51,12 +52,20 @@ class ApiTransactionReport(generics.ListAPIView):
     queryset = Transactions.objects.exclude(reported=True)
     serializer_class = TransactionSerializer
 
+class BaseTransactionFormSet(BaseFormSet):
+    def clean(self):
+        cleaned_data = super(self, BaseFormSet).clean()
+        x = 0
+        for form in self.forms:
+            if form.has_changed():
+                x+=1
+            if x < 1:
+                raise ValidationError("Must have at least one ticket number")
+        return cleaned_data
 
 class AddTransaction(View):
-
-
     def get(self, request, *args, **kwargs):
-        form2 = formset_factory(TicketsTransactionForm,extra=1)
+        form2 = formset_factory(TicketsTransactionForm,extra=1, formset=BaseTransactionFormSet)
         form = TransactionForm
         context = {
         'form2': form2,
@@ -67,9 +76,10 @@ class AddTransaction(View):
     def post(self, request, *args, **kwargs):
         form = TransactionForm(request.POST)
         formset = formset_factory(TicketsTransactionForm,extra=1)
-        form2 = formset(request.POST)
-        if form.is_valid() and form2.is_valid():
-            return HttpResponse('Form is Valid')
+        form2 = formset(request.POST)            print.form2.non_form_errors()
+        if form2.is_valid():
+            print form2.non_form_errors()
+            return HttpResponse("All Forms Valid")
 
         else:
             context = {
@@ -95,7 +105,7 @@ class TicketAudit(generic.ListView):
             location_dict[location.id] = {
                 'id': location.id,
                 'name': location.name,
-                'tickets':  Tickets.objects.filter(location = location.id),
+                'tickets':  Tickets.objects.filter(location = location.id).exclude(sold=True),
             }
         context['locations'] = location_dict
         return context

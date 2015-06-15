@@ -1,7 +1,6 @@
 {% include "ticket_app/header.html" %}
 <h1>Add a Transaction</h1>
 {% load staticfiles%}
-{{form.management_form}}
 
 
 
@@ -15,12 +14,18 @@
 
 {{form.as_p}}
 
-     <div class='table'>
-        {% for f in form2 %}
 
-        {{ form2}}
+         {{form2.management_form}}
+
+        {% for f in form2 %}
+<div class='table'>
+     <table>
+        {{ f.as_table}}
+             </table>
+
+</div>
         {% endfor %}
-        </div>
+
  <input type="button" class="btn btn-default btn-sm" value="Add Another Ticket" id="add_more">
 
 <input class='btn btn-default' type="submit" id="submit" value="submit">
@@ -35,7 +40,7 @@
 <script type="text/javascript">
 
     $('#add_more').click(function() {
-        cloneMore('div.table:last', 'trans');
+        cloneMore('div.table:last', 'form');
     });
     $('#submit').click(function(){
         ('#form2').submit()
