@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="148c17d9-208f-4609-a8f9-4a9bf2e585af" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/forms.py" afterPath="$PROJECT_DIR$/ticket_app/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html" afterPath="$PROJECT_DIR$/ticket_app/templates/ticket_app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/models.py" afterPath="$PROJECT_DIR$/ticket_app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/templates/ticket_app/report.html" afterPath="$PROJECT_DIR$/ticket_app/templates/ticket_app/report.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/tickets.iml" afterPath="$PROJECT_DIR$/.idea/tickets.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/templates/ticket_app/transaction_detail.html" afterPath="$PROJECT_DIR$/ticket_app/templates/ticket_app/transaction_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/urls.py" afterPath="$PROJECT_DIR$/ticket_app/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticket_app/views.py" afterPath="$PROJECT_DIR$/ticket_app/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TODO.txt" />
     </list>
     <ignored path="tickets.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,11 +78,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="report.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="report.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.022796353">
+            <state vertical-scroll-proportion="-0.23076923">
               <caret line="3" column="61" selection-start-line="3" selection-start-column="61" selection-end-line="3" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TODO.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TODO.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.082987554">
+              <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -147,6 +147,7 @@
         <option value="$PROJECT_DIR$/ticket_app/urls.py" />
         <option value="$PROJECT_DIR$/ticket_app/views.py" />
         <option value="$PROJECT_DIR$/ticket_app/templates/ticket_app/report.html" />
+        <option value="$PROJECT_DIR$/TODO.txt" />
       </list>
     </option>
   </component>
@@ -574,14 +575,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ticket_app/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/view_transactions.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -967,8 +960,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ticket_app/templates/ticket_app/report.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.022796353">
+        <state vertical-scroll-proportion="-0.23076923">
           <caret line="3" column="61" selection-start-line="3" selection-start-column="61" selection-end-line="3" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.082987554">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
           <folding />
         </state>
       </provider>
