@@ -27,7 +27,6 @@ transactions_urls = [
 urlpatterns = [
 
     url(r'^report/?$', views.GenerateReport.as_view()),
-    url(r'^success/$', views.Success.as_view()),
     url(r'^tickets/', include(tickets_urls)),
     url(r'^api/', include(api_urls)),
     url(r'^transactions/', include(transactions_urls)),

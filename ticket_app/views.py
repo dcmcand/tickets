@@ -2,6 +2,7 @@
 from rest_framework import generics
 from django.forms.formsets import formset_factory
 from django.forms.formsets import BaseFormSet
+from django import forms
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.views.generic.base import TemplateView, View
@@ -9,7 +10,7 @@ from django.shortcuts import render
 from .models import Transactions, Tickets, Locations, Tickets_Transactions
 from .serializers import TicketSerializer, TransactionSerializer
 from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm, get_locations, TransactionForm
-from django.template import RequestContext
+import datetime
 
 class ApiTicketList(generics.ListCreateAPIView):
     """
@@ -53,33 +54,34 @@ class ApiTransactionReport(generics.ListAPIView):
     serializer_class = TransactionSerializer
 
 class BaseTransactionFormSet(BaseFormSet):
-    def clean(self):
-        cleaned_data = super(self, BaseFormSet).clean()
-        x = 0
-        for form in self.forms:
-            if form.has_changed():
-                x+=1
-            if x < 1:
-                raise ValidationError("Must have at least one ticket number")
-        return cleaned_data
+    def clean(self, *args, **kwargs):
+        if any(self.errors):
+            return
+        if not self.forms[0].has_changed():
+            raise forms.ValidationError("You must enter at least one ticket number")
+
 
 class AddTransaction(View):
     def get(self, request, *args, **kwargs):
-        form2 = formset_factory(TicketsTransactionForm,extra=1, formset=BaseTransactionFormSet)
+        form2 = formset_factory(TicketsTransactionForm, extra=1, formset=BaseTransactionFormSet)
         form = TransactionForm
-        context = {
-        'form2': form2,
-        'form': form
-    }
+        context = {'form2': form2, 'form': form}
         return render(request, 'ticket_app/index.html', context)
 
     def post(self, request, *args, **kwargs):
         form = TransactionForm(request.POST)
-        formset = formset_factory(TicketsTransactionForm,extra=1)
-        form2 = formset(request.POST)            print.form2.non_form_errors()
-        if form2.is_valid():
-            print form2.non_form_errors()
-            return HttpResponse("All Forms Valid")
+        formset = formset_factory(TicketsTransactionForm, extra=1, formset=BaseTransactionFormSet)
+        form2 = formset(request.POST)
+        print form2.non_form_errors()
+        if form.is_valid() and form2.is_valid():
+            t = form.save()
+            for f in form2.forms:
+                trans = Transactions.objects.get(id=t.id)
+                tick = Tickets.objects.get(ticket_number=f.cleaned_data['ticket_number'])
+                ticket_transactions = Tickets_Transactions(ticket = tick, transactions = trans)
+                ticket_transactions.save()
+
+            return HttpResponseRedirect("/transactions/detail/%s" %t.id)
 
         else:
             context = {
@@ -146,13 +148,27 @@ class TransactionDetail(generic.DetailView):
         context['transaction_tickets'] = Tickets_Transactions.objects.filter(transactions = context['transaction'].id)
         return context
 
-class GenerateReport(generic.FormView):
-    template_name = 'ticket_app/report.html'
-    form_class = LocationForm
+class GenerateReport(View):
 
-class Success(View):
-    def get(self):
-        return HttpResponse('Success')
+    def get(self, request, *args, **kwargs):
+        context = {'form': LocationForm}
+        return render(request, 'ticket_app/report.html', context)
 
+    def post(self, request, *args, **kwargs):
+        form = LocationForm(request.POST)
+        if form.is_valid():
+            location = form.cleaned_data['location']
+            location_name = Locations.objects.get(id=location)
+            report = Transactions.objects.filter(reported=False).filter(location = location).order_by('date')
+            total = 0
+            for transaction in report:
+                total += transaction.total()
+                transaction.tickets = []
+                tickets = Tickets_Transactions.objects.filter(transactions = transaction)
+                for ticket in tickets:
+                    transaction.tickets.append(ticket.ticket.ticket_number)
 
+            context = {'total': total, 'report': report, 'date': datetime.datetime.now(), 'location': location_name}
 
+            return render(request, 'ticket_app/report.html', context)
+        return render(request, "ticket_app/report.html", context={'form': form})

@@ -15,7 +15,7 @@ class TicketsTransactionForm(Form):
     tickets = Tickets.objects.exclude(sold=True)
     choices = []
     for t in tickets:
-        choices.append((t.id, t.ticket_number))
+        choices.append((t.ticket_number, t.ticket_number))
     ticket_number = ChoiceField(choices=choices, widget=NumberInput)
 
 

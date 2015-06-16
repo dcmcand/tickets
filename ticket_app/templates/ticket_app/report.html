@@ -1,4 +1,40 @@
 {% include "ticket_app/header.html" %}
-<h1>Generate a Report</h1>
+<h1>Landfill Tickets Report</h1>
+{% if report %}
+<p><strong>{{ date | date }} - {{location.name}}</strong></p>
+<p><strong>Total: ${{total}}</strong></p>
+{% endif %}
+{% if form %}
+<form class="form" action="" method="POST">
+    {% csrf_token %}
 {{ form.as_p }}
+    <input type="submit" class="btn btn-default" value="Submit">
+    </form>
+{% endif %}
+
+{% if report %}
+
+<table class="table">
+    <thead>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Ticket Numbers</th>
+    </thead>
+    <tbody>
+
+        {% for transaction in report %}
+        <tr>
+        <td> {{ transaction.date | date }} </td>
+        <td> ${{ transaction.total }}</td>
+        <td>
+            {% for ticket in transaction.tickets %}
+            {{ ticket }}<br/>
+            {% endfor %}
+        </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+{% endif %}
 {% include "ticket_app/footer.html" %}

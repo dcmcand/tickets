@@ -23,7 +23,6 @@ class Locations(models.Model):
 class Tickets(models.Model):
     class Meta:
         verbose_name_plural = "Tickets"
-    transaction = models.ForeignKey('Transactions',blank=True, null=True, related_name='ticket_number', on_delete=models.SET_NULL)
     ticket_number = models.PositiveIntegerField(unique=True)
     date_entered = models.DateField(auto_now_add=True)
     sold = models.BooleanField(default=False)
