@@ -23,13 +23,13 @@ $(document).ready(function(){
     $('.ticket-show').click( function(){
         $(this).hide()
         var location = this.id;
-        $('#tickets-'+location).toggle();
+        $('#tickets-'+location).show();
     });
     $('.ticket-hide').click( function(){
-        $(this).hide()
+
         var location = this.id;
-        $('#tickets-'+location).toggle();
-        $('#'+location).toggle();
+        $('#tickets-'+location).hide();
+        $('#'+location).show();
     });
 });
 </script>
