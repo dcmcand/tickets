@@ -1,4 +1,4 @@
-from django.forms import Form, ModelForm, ChoiceField, IntegerField, NumberInput
+from django.forms import Form, ModelForm, ChoiceField, IntegerField, NumberInput, BooleanField
 from .models import Tickets, Locations, Transactions
 
 
@@ -17,6 +17,7 @@ class TicketsTransactionForm(Form):
     for t in tickets:
         choices.append((t.ticket_number, t.ticket_number))
     ticket_number = ChoiceField(choices=choices, widget=NumberInput)
+    value = BooleanField(label="$5 Ticket", required=False)
 
 
 
@@ -32,5 +33,5 @@ class LocationForm(Form):
 class TransactionForm(ModelForm):
     class Meta:
         model = Transactions
-        exclude = ['date', 'date_reported', 'reported']
+        exclude = ['date', 'report', 'reported']
 

@@ -1,10 +1,17 @@
 {% include "ticket_app/header.html" %}
 
-
+{% if form %}
 <form method="POST" class="form" action="">
 {% csrf_token %}
 {{ form.as_table }}
 
 <button type="submit" class="btn">Submit</button>
 </form>
+
+{% endif %}
+
+{% if data %}
+You have added tickets from {{data.start}} to {{data.end}} at {{data.location}}
+{% endif %}
+
 {% include "ticket_app/footer.html" %}

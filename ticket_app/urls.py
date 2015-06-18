@@ -25,7 +25,7 @@ transactions_urls = [
 
 
 urlpatterns = [
-
+    url(r'^report/(?P<pk>[0-9])/?$', views.ReportArchive.as_view(), name='Report Archive'),
     url(r'^report/?$', views.GenerateReport.as_view()),
     url(r'^tickets/', include(tickets_urls)),
     url(r'^api/', include(api_urls)),

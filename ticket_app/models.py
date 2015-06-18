@@ -23,6 +23,7 @@ class Locations(models.Model):
 class Tickets(models.Model):
     class Meta:
         verbose_name_plural = "Tickets"
+    value = models.PositiveIntegerField(default=10)
     ticket_number = models.PositiveIntegerField(unique=True)
     date_entered = models.DateField(auto_now_add=True)
     sold = models.BooleanField(default=False)
@@ -34,6 +35,7 @@ class Tickets(models.Model):
 class Transactions(models.Model):
     class Meta:
         verbose_name_plural = "Transactions"
+        ordering = ["date"]
 
     date = models.DateField(auto_now_add=True)
     location = models.ForeignKey(Locations)
@@ -41,11 +43,14 @@ class Transactions(models.Model):
     check_number = models.PositiveIntegerField(null=True, blank=True)
     reported = models.BooleanField(default=False)
     staff_initials = models.CharField(max_length=4)
+    report = models.ForeignKey('Report', blank=True, null=True)
     def total(self):
-        tickets = Tickets_Transactions.objects.filter(transactions=self.id).count()
-        total = tickets * 10
+        tickets = Tickets_Transactions.objects.filter(transactions=self.id)
+        total = 0
+        for ticket in tickets:
+            total += ticket.ticket.value
         return total
-    date_reported = models.DateField(blank=True, null=True)
+
 
     def __unicode__(self):
         return str(str(self.location) + ' - ' + str(self.date) + ' - $' + str(self.total()))
@@ -63,5 +68,12 @@ class Tickets_Transactions(models.Model):
         ticket.save()
     def __unicode__(self):
         return 'ticket number:' + str(self.ticket.ticket_number) + ', Transaction: ' + str(self.transactions.id)
+
+class Report(models.Model):
+    location = models.ForeignKey('Locations')
+    date = models.DateField(auto_now_add=True)
+
+    def __unicode__(self):
+        return str(self.location) + "-" + str(self.date)
 
 

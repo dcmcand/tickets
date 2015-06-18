@@ -1,5 +1,6 @@
 {% include "ticket_app/header.html" %}
 <h1>Landfill Tickets Report</h1>
+{{message}}
 {% if report %}
 <p><strong>{{ date | date }} - {{location.name}}</strong></p>
 <p><strong>Total: ${{total}}</strong></p>

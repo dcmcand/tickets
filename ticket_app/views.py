@@ -7,10 +7,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.views.generic.base import TemplateView, View
 from django.shortcuts import render
-from .models import Transactions, Tickets, Locations, Tickets_Transactions
+from django.core.urlresolvers import reverse
+from .models import Transactions, Tickets, Locations, Tickets_Transactions, Report
 from .serializers import TicketSerializer, TransactionSerializer
 from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm, get_locations, TransactionForm
 import datetime
+from time import strptime
 
 class ApiTicketList(generics.ListCreateAPIView):
     """
@@ -72,15 +74,19 @@ class AddTransaction(View):
         form = TransactionForm(request.POST)
         formset = formset_factory(TicketsTransactionForm, extra=1, formset=BaseTransactionFormSet)
         form2 = formset(request.POST)
-        print form2.non_form_errors()
+        print form2.errors
         if form.is_valid() and form2.is_valid():
             t = form.save()
             for f in form2.forms:
-                trans = Transactions.objects.get(id=t.id)
-                tick = Tickets.objects.get(ticket_number=f.cleaned_data['ticket_number'])
-                ticket_transactions = Tickets_Transactions(ticket = tick, transactions = trans)
-                ticket_transactions.save()
-
+                if f.has_changed():
+                    print f
+                    trans = Transactions.objects.get(id=t.id)
+                    tick = Tickets.objects.get(ticket_number=f.cleaned_data['ticket_number'])
+                    if f.cleaned_data['value']:
+                        tick.value = 5
+                        tick.save()
+                    ticket_transactions = Tickets_Transactions(ticket = tick, transactions = trans)
+                    ticket_transactions.save()
             return HttpResponseRedirect("/transactions/detail/%s" %t.id)
 
         else:
@@ -113,20 +119,25 @@ class TicketAudit(generic.ListView):
         return context
 
 class AddTickets(generic.FormView):
-    form_class = AddTicketsForm
-    template_name = "ticket_app/add_tickets.html"
-    success_url = '/'
-    def form_valid(self, form):
-        start = form.cleaned_data['start']
-        end = form.cleaned_data['end']
-        location = form.cleaned_data['location']
+    def get(self, request, *args, **kwargs):
+        form = AddTicketsForm
+        return render(request,'ticket_app/add_tickets.html', context={'form': form})
+    def post(self, request, *args, **kwargs):
+        form = AddTicketsForm(request.POST)
+        if form.is_valid():
+            start = form.cleaned_data['start']
+            end = form.cleaned_data['end']
+            location = form.cleaned_data['location']
 
-        for i in range(start, end +1):
-            t = Tickets(ticket_number=i, location=Locations.objects.get(id=location))
-            t.save()
+            for i in range(start, end +1):
+                t = Tickets(ticket_number=i, location=Locations.objects.get(id=location))
+                t.save()
 
-        loc = Locations.objects.get(id=location).name
-        return HttpResponse(content="You have added tickets from "+ str(start) + " to " + str(end) + " for " + str(loc))
+            loc = Locations.objects.get(id=location).name
+            context = {'data': {'start': start, 'end':end, 'location': loc}}
+            return render(request, 'ticket_app/add_tickets.html', context)
+        return render(request, 'ticket_app/add_tickets.html', context={'form': form})
+
 
 
 class TransactionsList(generic.ListView):
@@ -160,15 +171,42 @@ class GenerateReport(View):
             location = form.cleaned_data['location']
             location_name = Locations.objects.get(id=location)
             report = Transactions.objects.filter(reported=False).filter(location = location).order_by('date')
-            total = 0
-            for transaction in report:
-                total += transaction.total()
-                transaction.tickets = []
-                tickets = Tickets_Transactions.objects.filter(transactions = transaction)
-                for ticket in tickets:
-                    transaction.tickets.append(ticket.ticket.ticket_number)
+            if len(report) > 0:
+                r = Report(location = location_name)
+                r.save()
+                total = 0
+                for transaction in report:
+                    transaction.reported = True
+                    transaction.report = r
+                    transaction.save()
+                    total += transaction.total()
+                    transaction.tickets = []
+                    tickets = Tickets_Transactions.objects.filter(transactions = transaction)
+                    for ticket in tickets:
+                        transaction.tickets.append(ticket.ticket.ticket_number)
 
-            context = {'total': total, 'report': report, 'date': datetime.datetime.now(), 'location': location_name}
+                context = {'total': total, 'report': report, 'date': datetime.datetime.now(), 'location': location_name}
 
+                return render(request, 'ticket_app/report.html', context)
+            context = {'message': "There are no transactions to report"}
             return render(request, 'ticket_app/report.html', context)
         return render(request, "ticket_app/report.html", context={'form': form})
+
+class ReportArchive(View):
+    def get(self, request, *args, **kwargs):
+        report = Report.objects.get(id = self.kwargs['pk'])
+        location = report.location
+        transactions = Transactions.objects.filter(location = location).filter(report = report)
+
+        total = 0
+        for transaction in transactions:
+            total += transaction.total()
+            transaction.tickets = []
+            tickets = Tickets_Transactions.objects.filter(transactions = transaction)
+            for ticket in tickets:
+                transaction.tickets.append(ticket.ticket.ticket_number)
+
+        context = {'total': total, 'report': transactions, 'date': report.date, 'location': report.location}
+
+        return render(request, 'ticket_app/report.html', context)
+

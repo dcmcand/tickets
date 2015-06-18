@@ -9,7 +9,8 @@
 
 
 <form class="form" method="post" action="">
-
+{{ form.non_form_errors }}
+{{ form.non_form_errors }}
 {% csrf_token %}
 
 {{form.as_p}}
@@ -19,9 +20,16 @@
 {{ form2.non_form_errors}}
         {% for f in form2 %}
 <div class='table'>
-     <table>
-        {{ f.as_table}}
-             </table>
+
+
+            <div class="form-inline">
+                <strong>{{f.ticket_number.label}}: </strong> {{ f.ticket_number }}
+
+
+                {{f.value}} {{f.value.label}}
+            </div>
+
+
 
 </div>
         {% endfor %}
