@@ -2,50 +2,35 @@
 <h1>Add a Transaction</h1>
 {% load staticfiles%}
 
-
-
-
-
-
-
 <form class="form" method="post" action="">
-{{ form.non_form_errors }}
-{{ form.non_form_errors }}
-{% csrf_token %}
+    {{ form.non_form_errors }}
+    {% csrf_token %}
 
-{{form.as_p}}
+    {{form.as_p}}
 
-
-         {{form2.management_form}}
-{{ form2.non_form_errors}}
-        {% for f in form2 %}
-<div class='table'>
-
-
+    {{form2.management_form}}
+    {{ form2.non_form_errors}}
+    {% for f in form2 %}
+        <div class='table'>
             <div class="form-inline">
-                {{f.ticket_number.errors}}
-                <strong>{{f.ticket_number.label}}: </strong> {{ f.ticket_number }}
 
+                {{f.ticket_number.errors}}
+
+                <strong>{{f.ticket_number.label}}: </strong> {{ f.ticket_number }}
 
                 {{f.value}} {{f.value.label}}
             </div>
+        </div>
+    {% endfor %}
 
+    <input type="button" class="btn btn-default btn-sm" value="Add Another Ticket" id="add_more">
 
-
-</div>
-        {% endfor %}
-
- <input type="button" class="btn btn-default btn-sm" value="Add Another Ticket" id="add_more">
-
-<input class='btn btn-default' type="submit" id="submit" value="submit">
-
+    <input class='btn btn-default' type="submit" id="submit" value="submit">
 
 </form>
 
-
-
-
 <script type="text/javascript" src="{% static 'ticket_app/js/add_row.js' %}"></script>
+
 <script type="text/javascript">
 
     $('#add_more').click(function() {

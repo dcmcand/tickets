@@ -1,4 +1,3 @@
-
 from rest_framework import generics
 from django.forms.formsets import formset_factory
 from django.forms.formsets import BaseFormSet
@@ -14,19 +13,21 @@ from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm, get_loc
 import datetime
 from time import strptime
 
+
 class ApiTicketList(generics.ListCreateAPIView):
     """
     List all Tickets or Create a new Ticket
     """
-    #@method_decorator(login_required)
+    # @method_decorator(login_required)
     queryset = Tickets.objects.all()
     serializer_class = TicketSerializer
+
 
 class ApiTicketAudit(generics.ListAPIView):
     """
     Shows unsold tickets
     """
-    #@method_decorator(login_required)
+    # @method_decorator(login_required)
     queryset = Tickets.objects.exclude(sold=True)
     serializer_class = TicketSerializer
 
@@ -35,37 +36,47 @@ class ApiTransactionList(generics.ListCreateAPIView):
     """
     List all Transactions or Create a new Transaction
     """
-    #@method_decorator(login_required)
+    # @method_decorator(login_required)
     queryset = Transactions.objects.all()
     serializer_class = TransactionSerializer
+
 
 class ApiTransactionDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update, or delete a transaction instance
     """
-    #@method_decorator(login_required)
+    # @method_decorator(login_required)
     queryset = Transactions.objects.all()
     serializer_class = TransactionSerializer
+
 
 class ApiTransactionReport(generics.ListAPIView):
     """
     Shows unreported transactions
     """
-    #@method_decorator(login_required)
+    # @method_decorator(login_required)
     queryset = Transactions.objects.exclude(reported=True)
     serializer_class = TransactionSerializer
+
 
 class BaseTransactionFormSet(BaseFormSet):
     """
     Ensures that at least one form in the formset is filled out
     """
+
     def clean(self, *args, **kwargs):
         super(BaseTransactionFormSet, self).clean()
         if any(self.errors):
             return
         if not self.forms[0].has_changed():
             raise forms.ValidationError("You must enter at least one ticket number")
-
+        ticket_numbers = []
+        for form in self.forms:
+            ticket_number = form.cleaned_data.get('ticket_number')
+            if ticket_number in ticket_numbers:
+                raise forms.ValidationError('Duplicate ticket numbers are present')
+            else:
+                ticket_numbers.append(ticket_number)
 
 
 class AddTransaction(View):
@@ -80,7 +91,6 @@ class AddTransaction(View):
         formset = formset_factory(TicketsTransactionForm, extra=1, formset=BaseTransactionFormSet)
         form2 = formset(request.POST)
         if form.is_valid() and form2.is_valid():
-            print form2.cleaned_data
             t = form.save()
             for f in form2.forms:
                 if f.has_changed():
@@ -89,9 +99,9 @@ class AddTransaction(View):
                     if f.cleaned_data.get('value'):
                         tick.value = 5
                         tick.save()
-                    ticket_transactions = Tickets_Transactions(ticket = tick, transactions = trans)
+                    ticket_transactions = Tickets_Transactions(ticket=tick, transactions=trans)
                     ticket_transactions.save()
-            return HttpResponseRedirect("/transactions/detail/%s" %t.id)
+            return HttpResponseRedirect("/transactions/detail/%s" % t.id)
 
         else:
             context = {
@@ -101,15 +111,11 @@ class AddTransaction(View):
             return render(request, 'ticket_app/index.html', context)
 
 
-
-
-
-
-
 class TicketAudit(generic.ListView):
     queryset = Tickets.objects.exclude(sold=True)
     context_object_name = "tickets"
     template_name = "ticket_app/ticket_audit.html"
+
     def get_context_data(self, **kwargs):
         context = super(TicketAudit, self).get_context_data(**kwargs)
         location_dict = {}
@@ -117,15 +123,17 @@ class TicketAudit(generic.ListView):
             location_dict[location.id] = {
                 'id': location.id,
                 'name': location.name,
-                'tickets':  Tickets.objects.filter(location = location.id).exclude(sold=True),
+                'tickets': Tickets.objects.filter(location=location.id).exclude(sold=True),
             }
         context['locations'] = location_dict
         return context
 
+
 class AddTickets(generic.FormView):
     def get(self, request, *args, **kwargs):
         form = AddTicketsForm
-        return render(request,'ticket_app/add_tickets.html', context={'form': form})
+        return render(request, 'ticket_app/add_tickets.html', context={'form': form})
+
     def post(self, request, *args, **kwargs):
         form = AddTicketsForm(request.POST)
         if form.is_valid():
@@ -133,38 +141,40 @@ class AddTickets(generic.FormView):
             end = form.cleaned_data['end']
             location = form.cleaned_data['location']
 
-            for i in range(start, end +1):
+            for i in range(start, end + 1):
                 t = Tickets(ticket_number=i, location=Locations.objects.get(id=location))
                 t.save()
 
             loc = Locations.objects.get(id=location).name
-            context = {'data': {'start': start, 'end':end, 'location': loc}}
+            context = {'data': {'start': start, 'end': end, 'location': loc}}
             return render(request, 'ticket_app/add_tickets.html', context)
         return render(request, 'ticket_app/add_tickets.html', context={'form': form})
-
 
 
 class TransactionsList(generic.ListView):
     model = Transactions
     context_object_name = "transactions"
     template_name = "ticket_app/view_transactions.html"
+
     def get_context_data(self, **kwargs):
         context = super(TransactionsList, self).get_context_data(**kwargs)
         context['locations'] = get_locations()
         return context
 
+
 class TransactionDetail(generic.DetailView):
     model = Transactions
     context_object_name = "transaction"
     template_name = "ticket_app/transaction_detail.html"
+
     def get_context_data(self, **kwargs):
         context = super(TransactionDetail, self).get_context_data(**kwargs)
 
-        context['transaction_tickets'] = Tickets_Transactions.objects.filter(transactions = context['transaction'].id)
+        context['transaction_tickets'] = Tickets_Transactions.objects.filter(transactions=context['transaction'].id)
         return context
 
-class GenerateReport(View):
 
+class GenerateReport(View):
     def get(self, request, *args, **kwargs):
         context = {'form': LocationForm}
         return render(request, 'ticket_app/report.html', context)
@@ -174,9 +184,9 @@ class GenerateReport(View):
         if form.is_valid():
             location = form.cleaned_data['location']
             location_name = Locations.objects.get(id=location)
-            report = Transactions.objects.filter(reported=False).filter(location = location).order_by('date')
+            report = Transactions.objects.filter(reported=False).filter(location=location).order_by('date')
             if len(report) > 0:
-                r = Report(location = location_name)
+                r = Report(location=location_name)
                 r.save()
                 total = 0
                 for transaction in report:
@@ -185,7 +195,7 @@ class GenerateReport(View):
                     transaction.save()
                     total += transaction.total()
                     transaction.tickets = []
-                    tickets = Tickets_Transactions.objects.filter(transactions = transaction)
+                    tickets = Tickets_Transactions.objects.filter(transactions=transaction)
                     for ticket in tickets:
                         transaction.tickets.append(ticket.ticket.ticket_number)
 
@@ -196,21 +206,21 @@ class GenerateReport(View):
             return render(request, 'ticket_app/report.html', context)
         return render(request, "ticket_app/report.html", context={'form': form})
 
+
 class ReportArchive(View):
     def get(self, request, *args, **kwargs):
-        report = Report.objects.get(id = self.kwargs['pk'])
+        report = Report.objects.get(id=self.kwargs['pk'])
         location = report.location
-        transactions = Transactions.objects.filter(location = location).filter(report = report)
+        transactions = Transactions.objects.filter(location=location).filter(report=report)
 
         total = 0
         for transaction in transactions:
             total += transaction.total()
             transaction.tickets = []
-            tickets = Tickets_Transactions.objects.filter(transactions = transaction)
+            tickets = Tickets_Transactions.objects.filter(transactions=transaction)
             for ticket in tickets:
                 transaction.tickets.append(ticket.ticket.ticket_number)
 
         context = {'total': total, 'report': transactions, 'date': report.date, 'location': report.location}
 
         return render(request, 'ticket_app/report.html', context)
-
