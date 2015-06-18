@@ -8,10 +8,13 @@
            <span><a class="ticket-show" id="{{location.id}}" href="#">See Ticket Numbers</a></span>
         <div class="tickets" id="tickets-{{location.id}}">
             <a class="ticket-hide" id="{{location.id}}" href="#">Hide Ticket Numbers</a>
+            <div>
 {% for ticket in location.tickets %}
-                <p>{{ticket.ticket_number}}</p>
+
+                {{ticket.ticket_number}}
 
 {% endfor %}
+                </div>
         </div>
 
 </div>
