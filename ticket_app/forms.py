@@ -1,5 +1,5 @@
-from django.forms import Form, ModelForm, ChoiceField, IntegerField, NumberInput, BooleanField
-from .models import Tickets, Locations, Transactions
+from django.forms import Form, ModelForm, ChoiceField, IntegerField, NumberInput, BooleanField, ValidationError
+from .models import Tickets, Locations, Transactions, PaymentTypes
 
 
 def get_locations():
@@ -34,4 +34,11 @@ class TransactionForm(ModelForm):
     class Meta:
         model = Transactions
         exclude = ['date', 'report', 'reported']
+    def clean(self):
+        cleaned_data = super(TransactionForm, self).clean()
+        payment_type = cleaned_data.get('payment_type').type
+        if payment_type:
+            if payment_type == 'Check':
+                if cleaned_data['check_number'] == None:
+                    self.add_error('check_number', 'Check number is required when payment type is check')
 

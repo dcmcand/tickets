@@ -35,7 +35,7 @@ class Tickets(models.Model):
 class Transactions(models.Model):
     class Meta:
         verbose_name_plural = "Transactions"
-        ordering = ["date"]
+        ordering = ["-date"]
 
     date = models.DateField(auto_now_add=True)
     location = models.ForeignKey(Locations)

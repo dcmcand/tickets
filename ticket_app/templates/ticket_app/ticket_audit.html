@@ -2,20 +2,36 @@
 <h2>Unsold Tickets</h2>
                {% for location in locations.values %} 
 <div class="col-sm-6">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>{{ location.name }} - {{ location.tickets | length }} Unsold</th>
 
-            </tr>
-        </thead>
-        <tbody>
+                <h2>{{ location.name }} - {{ location.tickets | length }} Unsold</h2>
+
+           <span><a class="ticket-show" id="{{location.id}}" href="#">See Ticket Numbers</a></span>
+        <div class="tickets" id="tickets-{{location.id}}">
+            <a class="ticket-hide" id="{{location.id}}" href="#">Hide Ticket Numbers</a>
 {% for ticket in location.tickets %}
-            <tr>
-                <td>{{ticket.ticket_number}}</td>
-            </tr>
+                <p>{{ticket.ticket_number}}</p>
+
 {% endfor %}
-    </table>
+        </div>
+
 </div>
+
 {% endfor %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.tickets').hide();
+    $('.ticket-show').click( function(){
+        $(this).hide()
+        var location = this.id;
+        $('#tickets-'+location).toggle();
+    });
+    $('.ticket-hide').click( function(){
+        $(this).hide()
+        var location = this.id;
+        $('#tickets-'+location).toggle();
+        $('#'+location).toggle();
+    });
+});
+</script>
+
 {% include "ticket_app/footer.html" %}

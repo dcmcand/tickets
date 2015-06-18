@@ -74,12 +74,10 @@ class AddTransaction(View):
         form = TransactionForm(request.POST)
         formset = formset_factory(TicketsTransactionForm, extra=1, formset=BaseTransactionFormSet)
         form2 = formset(request.POST)
-        print form2.errors
         if form.is_valid() and form2.is_valid():
             t = form.save()
             for f in form2.forms:
                 if f.has_changed():
-                    print f
                     trans = Transactions.objects.get(id=t.id)
                     tick = Tickets.objects.get(ticket_number=f.cleaned_data['ticket_number'])
                     if f.cleaned_data['value']:
