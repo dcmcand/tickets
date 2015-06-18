@@ -1,5 +1,5 @@
 from django.forms import Form, ModelForm, ChoiceField, IntegerField, NumberInput, BooleanField, ValidationError
-from .models import Tickets, Locations, Transactions, PaymentTypes
+from .models import Tickets, Locations, Transactions, PaymentTypes, Tickets_Transactions
 
 
 def get_locations():
@@ -12,13 +12,26 @@ def get_locations():
 
 
 class TicketsTransactionForm(Form):
-    tickets = Tickets.objects.exclude(sold=True)
+    tickets = Tickets.objects.exclude(sold = True)
     choices = []
     for t in tickets:
         choices.append((t.ticket_number, t.ticket_number))
-    ticket_number = ChoiceField(choices=choices, widget=NumberInput)
+    ticket_number = IntegerField(max_value=999999, min_value=99999)
     value = BooleanField(label="$5 Ticket", required=False)
 
+    def clean(self):
+        cleaned_data = super(TicketsTransactionForm, self).clean()
+        if self.has_changed():
+            tickets = Tickets.objects.exclude(sold=True)
+            in_tickets = False
+            for ticket in tickets:
+                #print str(ticket.ticket_number) + ' - ' + str(cleaned_data.get('ticket_number')) + " = " +  str(ticket.ticket_number == cleaned_data.get('ticket_number'))
+                if ticket.ticket_number == cleaned_data.get('ticket_number'):
+                    in_tickets = True
+            print in_tickets
+            if not in_tickets:
+                self.add_error('ticket_number', 'Invalid Ticket Number')
+                print self.errors
 
 
 class AddTicketsForm(Form):

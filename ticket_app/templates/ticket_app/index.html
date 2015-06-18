@@ -23,6 +23,7 @@
 
 
             <div class="form-inline">
+                {{f.ticket_number.errors}}
                 <strong>{{f.ticket_number.label}}: </strong> {{ f.ticket_number }}
 
 
@@ -50,9 +51,7 @@
     $('#add_more').click(function() {
         cloneMore('div.table:last', 'form');
     });
-    $('#submit').click(function(){
-        ('#form2').submit()
-    });
+
 
 </script>
 

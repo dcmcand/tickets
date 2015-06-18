@@ -56,11 +56,16 @@ class ApiTransactionReport(generics.ListAPIView):
     serializer_class = TransactionSerializer
 
 class BaseTransactionFormSet(BaseFormSet):
+    """
+    Ensures that at least one form in the formset is filled out
+    """
     def clean(self, *args, **kwargs):
+        super(BaseTransactionFormSet, self).clean()
         if any(self.errors):
             return
         if not self.forms[0].has_changed():
             raise forms.ValidationError("You must enter at least one ticket number")
+
 
 
 class AddTransaction(View):
@@ -75,12 +80,13 @@ class AddTransaction(View):
         formset = formset_factory(TicketsTransactionForm, extra=1, formset=BaseTransactionFormSet)
         form2 = formset(request.POST)
         if form.is_valid() and form2.is_valid():
+            print form2.cleaned_data
             t = form.save()
             for f in form2.forms:
                 if f.has_changed():
                     trans = Transactions.objects.get(id=t.id)
-                    tick = Tickets.objects.get(ticket_number=f.cleaned_data['ticket_number'])
-                    if f.cleaned_data['value']:
+                    tick = Tickets.objects.get(ticket_number=f.cleaned_data.get('ticket_number'))
+                    if f.cleaned_data.get('value'):
                         tick.value = 5
                         tick.save()
                     ticket_transactions = Tickets_Transactions(ticket = tick, transactions = trans)
