@@ -23,9 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'td)w5or-*%bmk^*(s+51@gr9iq8e6-clniq101tdg3b)#_kxn-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = False
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+# CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLU = True
+X_FRAME_OPTIONS='DENY'
+ALLOWED_HOSTS = ['intranet.leblibrary.com']
 
 
 # Application definition
@@ -87,9 +91,14 @@ WSGI_APPLICATION = 'tickets.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lebnhorg_Tickets',
+        'USER': 'lebnhorg_tickets',
+        'PASSWORD': 'T9r(OB596T2N',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
+
 }
 
 
@@ -109,8 +118,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-STATIC_PATH = os.path.join(BASE_DIR, 'static')
+# STATIC_PATH = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    STATIC_PATH,
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'ticket_app/static_files')
+# STATICFILES_DIRS = (
+#    STATIC_PATH,
+#)
