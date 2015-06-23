@@ -101,7 +101,7 @@ class AddTransaction(View):
                         tick.save()
                     ticket_transactions = Tickets_Transactions(ticket=tick, transactions=trans)
                     ticket_transactions.save()
-            return HttpResponseRedirect("/transactions/detail/%s" % t.id)
+            return HttpResponseRedirect("/tickets/transactions/detail/%s" % t.id)
 
         else:
             context = {

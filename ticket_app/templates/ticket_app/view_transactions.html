@@ -15,7 +15,7 @@
         {% for transaction in transactions  %}
             {% if transaction.location.id = location.0 %}
                 <tr>
-                   <td> <a href="/transactions/detail/{{transaction.id}}/">{{ transaction.date | date:"Y-m-d" }}</a></td>
+                   <td> <a href="/tickets/transactions/detail/{{transaction.id}}/">{{ transaction.date | date:"Y-m-d" }}</a></td>
                     <td>${{ transaction.total }}</td>
                     <td>
                     <a href="../report/{{transaction.report.id}}/">
