@@ -10,6 +10,11 @@ function cloneMore(selector, type) {
         var newFor = $(this).attr('for').replace('-' + (total-1) + '-','-' + total + '-');
         $(this).attr('for', newFor);
     });
+    newElement.find('input[type="number"]').each(function() {
+        var numb = $(this).val()
+        numb++;
+        $(this).val(numb);
+    });
     total++;
     $('#id_' + type + '-TOTAL_FORMS').val(total);
     $(selector).after(newElement);
