@@ -53,7 +53,7 @@ class Transactions(models.Model):
 
 
     def __unicode__(self):
-        return str(str(self.location) + ' - ' + str(self.date) + ' - $' + str(self.total()))
+        return str(str(self.id) + " - " + str(self.date) + ' - $' + str(self.total()))
 
 class Tickets_Transactions(models.Model):
     class Meta:
