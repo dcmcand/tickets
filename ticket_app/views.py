@@ -12,7 +12,7 @@ from .serializers import TicketSerializer, TransactionSerializer
 from .forms import TicketsTransactionForm, AddTicketsForm, LocationForm, get_locations, TransactionForm
 import datetime
 from time import strptime
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class ApiTicketList(generics.ListCreateAPIView):
     """
@@ -161,6 +161,18 @@ class TransactionsList(generic.ListView):
         context['locations'] = get_locations()
         return context
 
+def TransactionListPaged(request):
+    locations = get_locations()
+    transactions = get_transactions()
+    paginator = Paginator([locations, transactions], 25)
+    page = request.GET.get('page')
+    try:
+        trans = paginator.page(page)
+    except PageNotAnInteger:
+        trans = paginator.page(1)
+    except EmptyPage:
+        trans = paginator.page(paginator.num_pages)
+    return render(request, 'transactions-page.html', {'trans': trans})
 
 class TransactionDetail(generic.DetailView):
     model = Transactions
