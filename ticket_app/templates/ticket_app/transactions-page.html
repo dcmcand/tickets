@@ -1,0 +1,21 @@
+{% for tran in trans %}
+    {# Each "tran" is a Contact model object. #}
+		{{ tran.full_name|upper }}<br />
+				    ...
+{% endfor %}
+
+<div class="pagination">
+	<span class="step-links">
+		{% if trans.has_previous %}
+			<a href="?page={{ trans.previous_page_number }}">previous</a>
+		{% endif %}
+
+		<span class="current">
+			Page {{ trans.number }} of {{ trans.paginator.num_pages }}.
+		</span>
+
+		{% if trans.has_next %}
+			<a href="?page={{ trans.next_page_number }}">next</a>
+		{% endif %}
+	</span>
+</div>
