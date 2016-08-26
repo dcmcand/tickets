@@ -155,24 +155,13 @@ class TransactionsList(generic.ListView):
     model = Transactions
     context_object_name = "transactions"
     template_name = "ticket_app/view_transactions.html"
+    paginate_by = 100
 
     def get_context_data(self, **kwargs):
         context = super(TransactionsList, self).get_context_data(**kwargs)
         context['locations'] = get_locations()
         return context
 
-def TransactionListPaged(request):
-    locations = get_locations()
-    transactions = get_transactions()
-    paginator = Paginator([locations, transactions], 25)
-    page = request.GET.get('page')
-    try:
-        trans = paginator.page(page)
-    except PageNotAnInteger:
-        trans = paginator.page(1)
-    except EmptyPage:
-        trans = paginator.page(paginator.num_pages)
-    return render(request, 'transactions-page.html', {'trans': trans})
 
 class TransactionDetail(generic.DetailView):
     model = Transactions

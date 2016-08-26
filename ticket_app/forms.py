@@ -10,7 +10,6 @@ def get_locations():
         choices.append((l.id, l.name))
     return choices
 
-
 class TicketsTransactionForm(Form):
     tickets = Tickets.objects.exclude(sold = True)
     choices = []
