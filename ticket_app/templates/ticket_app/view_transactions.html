@@ -34,7 +34,7 @@
                    <td> <a href="/transactions/detail/{{transaction.id}}/">{{ transaction.date | date:"Y-m-d" }}</a></td>
                     <td>${{ transaction.total }}</td>
                     <td>
-                    <a href="../report/{{transaction.report.id}}/">
+                    <a href="/report/{{transaction.report.id}}/">
                         {%if transaction.reported %}
 
                         {{ transaction.report.date | date }}
